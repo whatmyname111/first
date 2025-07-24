@@ -4,15 +4,18 @@
   <meta charset="UTF-8" />
   <title>Проверка reCAPTCHA</title>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
   <div class="container">
     <h2>Пожалуйста, подтвердите, что вы не робот</h2>
+
+    <!--ERROR-->
+
     <form action="/" method="POST">
       <div class="g-recaptcha" data-sitekey="6Ldn040rAAAAAMG5MSb0IDvx0OW0Ij_Cj8jpYZas"></div>
       <br/>
-      <input type="submit" value="Подтвердить" />
+      <input type="submit" value="Подтвердить" class="btn" />
     </form>
   </div>
 </body>
