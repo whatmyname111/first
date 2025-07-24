@@ -1,0 +1,12 @@
+
+services:
+  - type: web
+    env: python
+    plan: free  # или paid, по желанию
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: FLASK_ENV
+        value: development  # можно production, если хочешь
+      - key: PORT
+        value: '5000'
