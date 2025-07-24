@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, Response
+from flask import Flask, request, redirect, send_from_directory, Response
 import requests
 import os
 
@@ -12,7 +12,7 @@ def index():
     if request.method == 'POST':
         recaptcha_response = request.form.get('g-recaptcha-response')
         if not recaptcha_response:
-            return Response('❌ Пожалуйста, подтвердите капчу!', mimetype='text/html')
+            return Response(render_html(error='❌ Пожалуйста, подтвердите капчу!'), mimetype='text/html')
 
         verify_url = 'https://www.google.com/recaptcha/api/siteverify'
         payload = {
@@ -25,11 +25,25 @@ def index():
         if result.get('success'):
             return redirect(REDIRECT_URL)
         else:
-            return Response('❌ Капча не пройдена. Попробуйте снова.', mimetype='text/html')
+            return Response(render_html(error='❌ Капча не пройдена. Попробуйте снова.'), mimetype='text/html')
     else:
-        # Отдаем статичный html файл
-        with open('index.html', 'r', encoding='utf-8') as f:
-            return f.read()
+        return Response(render_html(), mimetype='text/html')
+
+@app.route('/style.css')
+def style():
+    return send_from_directory('.', 'style.css')
+
+def render_html(error=None):
+    with open('index.html', encoding='utf-8') as f:
+        html = f.read()
+
+    if error:
+        # Вставим ошибку в HTML, там где должен быть div с id="error"
+        html = html.replace('<!--ERROR-->', f'<div class="error">{error}</div>')
+    else:
+        html = html.replace('<!--ERROR-->', '')
+
+    return html
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
