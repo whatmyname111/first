@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-SECRET_KEY = '6LfCzo0rAAAAAEiV-3ZXpucC4XwF-ZIFIGKpBWTN'
+SECRET_KEY = '6Ldn040rAAAAALJzqHbNh0stAUkTLxdXhzbsCzXg'
 REDIRECT_URL = 'https://rekonise.com/getkeyscript-3kbex'
 
 @app.route('/', methods=['GET', 'POST'])
