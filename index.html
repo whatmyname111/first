@@ -2,21 +2,34 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Проверка reCAPTCHA</title>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <title>Двойная reCAPTCHA</title>
+  <!-- Подключаем один раз -->
+  <script src="https://www.google.com/recaptcha/api.js?render=ВАШ_V3_SITE_KEY" async defer></script>
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
   <div class="container">
     <h2>Пожалуйста, подтвердите, что вы не робот</h2>
 
-    <!--ERROR-->
-
-    <form action="/" method="POST">
+    <form id="myForm" action="/" method="POST">
+      <!-- v2 капча -->
       <div class="g-recaptcha" data-sitekey="6Ldn040rAAAAAMG5MSb0IDvx0OW0Ij_Cj8jpYZas"></div>
       <br/>
+
+      <!-- v3 капча (скрытая) -->
+      <input type="hidden" name="g-recaptcha-v3-response" id="g-recaptcha-v3-response">
+
       <input type="submit" value="Подтвердить" class="btn" />
     </form>
   </div>
+
+  <script>
+    // v3 капча выполняется в фоне
+    grecaptcha.ready(function() {
+      grecaptcha.execute('6Lf8PKUrAAAAAL5-XRnWj4GK-7x1aAQc-e-Hclpj', {action: 'submit'}).then(function(token) {
+        document.getElementById('g-recaptcha-v3-response').value = token;
+      });
+    });
+  </script>
 </body>
 </html>
