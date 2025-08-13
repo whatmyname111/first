@@ -58,6 +58,19 @@ h2 {
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
+/* Новый стиль для блока reCAPTCHA info */
+.recaptcha-info {
+  font-size: 12px;
+  color: #fff; /* белый для контраста на тёмном фоне */
+  margin-top: 15px;
+  line-height: 1.4;
+}
+
+.recaptcha-info a {
+  color: #1abc9c; /* яркий, заметный */
+  text-decoration: underline;
+}
+
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(20px);}
   to {opacity: 1; transform: translateY(0);}
