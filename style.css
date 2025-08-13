@@ -12,20 +12,28 @@ body {
   overflow: hidden;
 }
 
+/* Фиксируем под размеры телефона */
 .container {
   background: rgba(0, 0, 0, 0.5);
-  padding: 50px 70px;
+  padding: 30px 20px;
   border-radius: 25px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
   text-align: center;
-  width: 400px;
+
+  /* ширина и высота как у телефона */
+  width: 360px; 
+  min-height: 640px;
+
   animation: fadeIn 1.5s ease forwards;
+
+  /* Чтобы и на ПК была как мобильная версия */
+  transform: scale(1);
 }
 
 h2 {
   font-weight: 700;
-  font-size: 2em;
-  margin-bottom: 25px;
+  font-size: 1.5em;
+  margin-bottom: 20px;
   text-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
@@ -34,8 +42,8 @@ h2 {
   background: linear-gradient(45deg, #27ae60, #2ecc71);
   border: none;
   color: white;
-  padding: 15px 40px;
-  font-size: 18px;
+  padding: 12px 30px;
+  font-size: 16px;
   border-radius: 25px;
   cursor: pointer;
   font-weight: 700;
@@ -61,13 +69,13 @@ h2 {
 /* Новый стиль для блока reCAPTCHA info */
 .recaptcha-info {
   font-size: 12px;
-  color: #fff; /* белый для контраста на тёмном фоне */
+  color: #fff;
   margin-top: 15px;
   line-height: 1.4;
 }
 
 .recaptcha-info a {
-  color: #1abc9c; /* яркий, заметный */
+  color: #1abc9c;
   text-decoration: underline;
 }
 
